@@ -80,6 +80,7 @@ const config = {
       srcPath + '/app/components/chat',
       srcPath + '/app/components/login',
       srcPath + '/app/components/sidebar',
+      srcPath + '/app/assets/js',
       srcPath + '/app/actions',
       srcPath + '/app/reducers',
       srcPath + '/www'

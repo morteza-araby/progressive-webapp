@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as actions from 'Actions'
+import AppLocalBootstrapActions from 'app_local'
 import Loader from 'Loader'
 import Header from 'Header'
 import Adoption from 'Adoption'
@@ -11,7 +12,7 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        $('.loader').fadeOut(1000);
+        AppLocalBootstrapActions.initLoader()
     }
     render() {
         return (

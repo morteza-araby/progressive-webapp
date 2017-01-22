@@ -5,7 +5,9 @@ This example is build on google's Progressive Web Apps principal
 This project is build on the course
 
 Building a Progressive Web Application sample example 
+
 https://www.lynda.com/CSS-tutorials/Building-Progressive-Web-App/518052-2.html
+
 https://github.com/planetoftheweb/progressive
 
 This project uses React, Redux and bootstrap.
