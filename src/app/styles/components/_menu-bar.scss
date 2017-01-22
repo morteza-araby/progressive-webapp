@@ -1,0 +1,11 @@
+.top-bar {
+  background-color: $menubar-background;
+  color: $menubar-color;
+  ul {
+    background-color: transparent;
+  }
+  button {
+    margin-right: 2rem;
+    //cursor: pointer;
+  } 
+}
