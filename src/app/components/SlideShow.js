@@ -9,11 +9,11 @@ class SlideShow extends Component {
         var petName = slide.pet + " photo"
         if (i === 0) {
             return (
-                <div className="item active"><img src={imgSrc} alt={petName} key={i} /></div>
+                <div className="item active" key={i}><img src={imgSrc} alt={petName} /></div>
             )
         } else {
             return (
-                <div className="item"><img src={imgSrc} alt={petName} key={i} /></div>
+                <div className="item"  key={i}><img src={imgSrc} alt={petName} /></div>
             )
         }
     }
