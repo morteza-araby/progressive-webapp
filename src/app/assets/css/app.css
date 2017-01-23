@@ -274,7 +274,7 @@ header .inbody .navbar-brand span.subhead {
 }
 
 .modal-dialog {
-  width: 90%;
+  /*width: 90%;*/
   margin: 30px auto;
 }
 
