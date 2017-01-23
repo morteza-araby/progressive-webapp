@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const buildPath = path.resolve(__dirname, 'build');
-const srcPath = path.resolve(__dirname, 'src');
+const buildPath = path.join(__dirname, 'build');
+const srcPath = path.join(__dirname, 'src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const TransferWebpackPlugin = require('transfer-webpack-plugin');
 var envFile = require('node-env-file')
@@ -28,21 +28,19 @@ const config = {
   },
   // Server Configuration options
   devServer: {
-    contentBase: 'src/www', // Relative directory for base of server
+    contentBase: buildPath, // Relative directory for base of server
     devtool: 'eval',
     hot: true, // Live-reload
     inline: true,
     port: 3000, // Port Number
-    host: 'localhost', // Change to '0.0.0.0' for external facing server
+    historyApiFallback: true,   
+    host: '0.0.0.0', // Change to '0.0.0.0' for external facing server
   },
   //devtool: 'eval',
    devtool: process.env.NODE_ENV === 'production' ? undefined : 'source-map',
   output: {
     path: buildPath, // Path of output file
     filename: 'app.js'
-  },
-  sassLoader: {
-    includePaths: [path.resolve(__dirname, './node_modules/foundation-sites/scss')]
   },
   plugins: [
     // Enables Hot Modules Replacement
@@ -56,6 +54,14 @@ const config = {
       },
       {
         from: 'app/assets/ico'
+      },
+      {
+        from: 'app/assets/images',
+        to: 'images'
+      },
+      {
+        from: 'app/data',
+        to: 'data'
       }
     ], path.resolve(__dirname, 'src')),
     // load jquery in global space

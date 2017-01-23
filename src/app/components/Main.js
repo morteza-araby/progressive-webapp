@@ -10,9 +10,8 @@ class Main extends Component {
     constructor(props, context) {
         super(props, context)
     }
-
     componentDidMount() {
-        AppLocalBootstrapActions.initLoader()
+        //AppLocalBootstrapActions.initLoader()
     }
     render() {
         return (

@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const buildPath = path.resolve(__dirname, 'build');
-const srcPath = path.resolve(__dirname, 'src');
+const buildPath = path.join(__dirname, 'build');
+const srcPath = path.join(__dirname, 'src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const TransferWebpackPlugin = require('transfer-webpack-plugin');
 var envFile = require('node-env-file')
@@ -15,8 +15,11 @@ try {
 
 const config = {
   entry: [
-    'script!jquery/dist/jquery.min.js', 
-    'script!foundation-sites/dist/foundation.min.js', 
+    'script!jquery/dist/jquery.min.js',
+    'script!bootstrap/dist/js/bootstrap.min.js',
+    'webpack/hot/dev-server', 
+    'webpack/hot/only-dev-server', 
+    'script!./src/app/assets/js/bootstrap_custom.js',
     path.join(__dirname, '/src/app/app.js')
   ],
   externals: {
@@ -59,6 +62,14 @@ const config = {
       },
       {
         from: 'app/assets/ico'
+      },
+      {
+        from: 'app/assets/images',
+        to: 'images'
+      },
+      {
+        from: 'app/data',
+        to: 'data'
       }
     ], path.resolve(__dirname, 'src')),
     // load jquery in global space
@@ -83,6 +94,7 @@ const config = {
       srcPath + '/app/components/chat',
       srcPath + '/app/components/login',
       srcPath + '/app/components/sidebar',
+      srcPath + '/app/assets/js',
       srcPath + '/app/actions',
       srcPath + '/app/reducers',
       srcPath + '/www'

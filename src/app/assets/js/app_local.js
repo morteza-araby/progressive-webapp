@@ -1,5 +1,11 @@
 var topoffset = 50;
 var AppLocalBootstrapActions = {
+    initApp() {
+        this.loadData().then((data) => {
+            console.log('Data is: ', data)
+            this.initLoader()
+        })
+    },
     initLoader() {
         $('.loader').fadeOut(1000);
     },
@@ -33,6 +39,27 @@ var AppLocalBootstrapActions = {
             target: 'header .navbar',
             offset: topoffset
         });
+    },
+
+    loadDataX() {
+        return new Promise((resolve, reject) => {
+            $.getJSON('data/pets.json', function (data) {
+                resolve(data)
+            })
+        })
+    },
+
+    loadData() {
+        return new Promise((resolve, reject) => {
+            $.getJSON('data/pets.json')
+                .done((data) => {
+                    resolve(data)
+                })
+                .fail((jqxhr, textStatus, error) => {
+                    var err = textStatus + ", " + error
+                    reject(err)
+                })
+        })
     }
 }
 

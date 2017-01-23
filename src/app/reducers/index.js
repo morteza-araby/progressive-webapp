@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import searchTextReducer from './searchTextReducer'
+import setDataReducer from './setDataReducer'
 
 const rootReducer = combineReducers({
-  serarchText: searchTextReducer
+  data: setDataReducer
 });
 
 export default rootReducer;
