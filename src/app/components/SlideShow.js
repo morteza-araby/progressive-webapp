@@ -67,20 +67,3 @@ export default connect(
         }
     }
 )(SlideShow)
-
-//  return (
-//             <div class="carousel fade" data-ride="carousel" id="slideshow">
-//                 <div class="carousel-inner">
-//                     {{#each slideshow}}
-//           {{#if @first}}
-//             <div class="item active"><img src="images/pets/{{filename}}.jpg" alt="{{pet}} photo"></div>
-//                         {{ else}}
-//                         <div class="item"><img src="images/pets/{{filename}}.jpg" alt="{{pet}} photo"></div>
-//                             {{/if}}
-//         {{/each}}
-//       </div>{/*<!--carousel inner -->*/}
-//                         <a class="left carousel-control" href="#slideshow" role="button" data-slide="prev"></a>
-//                         <a class="right carousel-control" href="#slideshow" role="button" data-slide="next"></a>
-//                         {/*<!--carousel fade -->*/}
-//                     </div>
-//                     );

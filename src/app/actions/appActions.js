@@ -34,4 +34,11 @@ export function setData(data) {
     }
 }
 
+export function setCurrentPet(pet){
+    return {
+        type: types.SET_CURRENT_PET,
+        currentPet: pet
+    }
+}
+
 
