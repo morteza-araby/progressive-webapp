@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import setDataReducer from './setDataReducer'
-import setCurrentPetReducer from './setCurrentPetReducer'
+import dataReducer from './setDataReducer'
+import currentPetReducer from './setCurrentPetReducer'
+import currentAppointmentReducer from './setCurrentAppointmentReducer'
 
 const rootReducer = combineReducers({
-  data: setDataReducer,
-  currentPet: setCurrentPetReducer
+  data: dataReducer,
+  currentPet: currentPetReducer,
+  currentAppointment: currentAppointmentReducer
 });
 
 export default rootReducer;

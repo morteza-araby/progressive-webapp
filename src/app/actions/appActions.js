@@ -36,8 +36,15 @@ export function setData(data) {
 
 export function setCurrentPet(pet){
     return {
-        type: types.SET_CURRENT_PET,
+        type: types.CURRENT_PET,
         currentPet: pet
+    }
+}
+
+export function setCurrentAppointment(appointment){
+    return{
+        type: types.CURRENT_APPOINTMENT,
+        currentAppointment: appointment
     }
 }
 
