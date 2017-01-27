@@ -7,8 +7,12 @@
     "url": ""
   },
   "scripts": {
+    "preserve": "webpack --config webpack-dev-server.config.js",
+    "preserve-prod": "webpack --config webpack-prod-server.config.js",
     "start": "npm run build && node server.js",
-    "serve": "webpack --config webpack-dev-server.config.js && webpack-dev-server --config webpack-dev-server.config.js --progress --colors",
+    "serve": "sw-precache --config=sw-precache-config.js && webpack-dev-server --config webpack-dev-server.config.js --progress --colors",
+    "serve-prod": "sw-precache --config=sw-precache-config.js && webpack-dev-server --config webpack-prod-server.config.js --progress --colors",
+    "serve-2": "sw-precache --root='build/' --static-file-globs='build/**/!(*map*)' && webpack-dev-server --config webpack-dev-server.config.js --progress --colors",
     "build": "webpack --config webpack-production.config.js --progress --colors"
   },
   "private": true,
@@ -20,12 +24,13 @@
     "babel-preset-stage-2": "^6.18.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.0",
+    "html-webpack-plugin": "^2.24.1",
     "node-env-file": "^0.1.8",
     "node-sass": "^3.13.0",
-    "html-webpack-plugin": "^2.24.1",
     "sass-loader": "^4.0.2",
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
+    "sw-precache-webpack-plugin": "^0.7.2",
     "transfer-webpack-plugin": "^0.1.4",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
@@ -46,6 +51,7 @@
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.1.0",
+    "sw-precache": "^4.3.0",
     "trim": "0.0.1"
   }
 }

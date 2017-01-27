@@ -6,7 +6,7 @@ import * as  actions from 'Actions'
 import routes from './routes'
 import { configureStore } from 'configureStore'
 
-import 'font-awesome/css/font-awesome.min.css'
+//import 'font-awesome/css/font-awesome.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 //Load app styles
 import './assets/css/bootstrap_custom.css'
@@ -14,6 +14,8 @@ import './assets/css/app.css'
 //import './styles/app.scss'
 
 //import AppLocalBootstrapActions from 'app_local'
+//const runtime = require('offline-plugin/runtime');
+
 
 var store = configureStore()
 store.subscribe(() => {
@@ -22,6 +24,37 @@ store.subscribe(() => {
 })
 
 store.dispatch(actions.startSetData())
+
+//Register service worker with browser, supported only in chrome
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/service-worker.js')
+      .then(function() {
+        console.log('Service Worker Active');
+      })
+  }
+
+// runtime.install({
+//   onUpdating: () => {
+//     console.log('SW Event:', 'onUpdating');
+//   },
+//   onUpdateReady: () => {
+//     console.log('SW Event:', 'onUpdateReady');
+//     // Tells to new SW to take control immediately
+//     runtime.applyUpdate();
+//   },
+//   onUpdated: () => {
+//     console.log('SW Event:', 'onUpdated');
+//     // Reload the webpage to load into the new version
+//     window.location.reload();
+//   },
+
+//   onUpdateFailed: () => {
+//     console.log('SW Event:', 'onUpdateFailed');
+//   }
+// });
+
+//require('offline-plugin/runtime').install(); // eslint-disable-line global-require
 
 //AppLocalBootstrapActions.initApp()
 // Render the main app react component into the app div.

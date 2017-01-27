@@ -5,6 +5,9 @@ const srcPath = path.join(__dirname, 'src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const TransferWebpackPlugin = require('transfer-webpack-plugin');
 var envFile = require('node-env-file')
+//var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+//var OfflinePlugin = require('offline-plugin')
+var fs = require('fs')
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
@@ -25,8 +28,21 @@ const config = {
   externals: {
     jquery: 'jQuery'
   },
-  // Render source-map file for final build
-  //devtool: 'source-map',
+  // Server Configuration options
+  devServer: {
+    contentBase: buildPath, // Relative directory for base of server
+    devtool: 'eval',
+    hot: true, // Live-reload
+    inline: true,
+    port: 3000, // Port Number
+    historyApiFallback: true,
+    host: '0.0.0.0', // Change to '0.0.0.0' for external facing server
+    https: true,
+    cert: fs.readFileSync('./src/app/assets/cert/server.crt', 'utf8'),
+    //ca: './src/app/assets/cert/ca_cert.pem',
+    key: fs.readFileSync('./src/app/assets/cert/server.key', 'utf8')
+  },
+  //devtool: 'eval',
    devtool: process.env.NODE_ENV === 'production' ? undefined : 'source-map',
   // output config
   output: {
@@ -37,6 +53,8 @@ const config = {
     includePaths: [path.resolve(__dirname, './node_modules/foundation-sites/scss')]
   },
   plugins: [
+	// Enables Hot Modules Replacement
+    new webpack.HotModuleReplacementPlugin(),
     // Define production build to allow React to strip out unnecessary checks
     new webpack.DefinePlugin({
       'process.env': {
