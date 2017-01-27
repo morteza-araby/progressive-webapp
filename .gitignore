@@ -3,4 +3,4 @@ build
 config/
 config/development.env
 .git/
-
+*.log
