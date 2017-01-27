@@ -43,7 +43,7 @@ const config = {
     key: fs.readFileSync('./src/app/assets/cert/server.key', 'utf8')
   },
   //devtool: 'eval',
-   devtool: process.env.NODE_ENV === 'production' ? undefined : 'source-map',
+   //devtool: process.env.NODE_ENV === 'production' ? undefined : 'source-map',
   // output config
   output: {
     path: buildPath, // Path of output file
